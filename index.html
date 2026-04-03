@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carl Fakhir</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <span class="nav-logo">cf.</span>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <p class="hero-greeting">Hi, I'm</p>
+      <h1>Carl Fakhir</h1>
+      <h2>CS student <span class="accent">@</span> Georgia Tech</h2>
+      <p class="hero-sub">
+        I build things that are useful, occasionally fun, and hopefully fast.
+        Interested in systems, ML, and full-stack web.
+      </p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn btn-primary">See my work</a>
+        <a href="https://github.com/CarlSome123" target="_blank" class="btn btn-ghost">GitHub</a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <pre class="code-block">
+<span class="kw">def</span> <span class="fn">carl</span>():
+    <span class="kw">return</span> {
+        <span class="str">"role"</span>: <span class="str">"CS student"</span>,
+        <span class="str">"school"</span>: <span class="str">"Georgia Tech"</span>,
+        <span class="str">"interests"</span>: [
+            <span class="str">"systems"</span>,
+            <span class="str">"machine learning"</span>,
+            <span class="str">"web dev"</span>,
+        ],
+        <span class="str">"coffee"</span>: <span class="kw">True</span>,
+    }</pre>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="about">
+    <div class="section-inner">
+      <h3 class="section-label">About</h3>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>
+            I'm a Computer Science student at Georgia Tech, where I've been learning to
+            appreciate both the elegance of algorithms and the chaos of debugging production code at 2am.
+          </p>
+          <p>
+            My projects tend to live at the intersection of things I find annoying and things I think
+            could be automated. When I'm not writing code, I'm probably listening to music—which is
+            also why I built a Spotify analytics app.
+          </p>
+          <p>
+            Currently exploring systems programming, data-driven applications, and anything that
+            requires more thinking than Googling.
+          </p>
+        </div>
+        <div class="about-facts">
+          <div class="fact">
+            <span class="fact-num">2</span>
+            <span class="fact-label">GitHub repos (and counting)</span>
+          </div>
+          <div class="fact">
+            <span class="fact-num">∞</span>
+            <span class="fact-label">Stack Overflow tabs open</span>
+          </div>
+          <div class="fact">
+            <span class="fact-num">ATL</span>
+            <span class="fact-label">Based in Atlanta, GA</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="projects">
+    <div class="section-inner">
+      <h3 class="section-label">Projects</h3>
+      <div class="projects-grid">
+
+        <div class="project-card featured">
+          <div class="card-top">
+            <div class="card-icon">&#9836;</div>
+            <div class="card-links">
+              <a href="https://github.com/CarlSome123/spotify-wrapper" target="_blank" title="GitHub">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              </a>
+            </div>
+          </div>
+          <h4>Spotify Wrapper</h4>
+          <p>A full-stack Django web app that visualizes your Spotify listening habits — top tracks, artists, genres, and mood trends — across short, medium, and long time ranges. Supports duo comparisons and LLM-generated personality summaries.</p>
+          <div class="tags">
+            <span>Python</span><span>Django</span><span>Spotify API</span><span>PostgreSQL</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="card-top">
+            <div class="card-icon">&#9654;</div>
+            <div class="card-links">
+              <a href="https://github.com/CarlSome123/pathfinding-visualizer" target="_blank" title="GitHub">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              </a>
+            </div>
+          </div>
+          <h4>Pathfinding Visualizer</h4>
+          <p>Interactive browser tool for visualizing graph search algorithms in real time. Draw walls, set start/end nodes, and watch BFS, DFS, Dijkstra, and A* explore the grid step by step.</p>
+          <div class="tags">
+            <span>JavaScript</span><span>HTML Canvas</span><span>Algorithms</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="card-top">
+            <div class="card-icon">&#9881;</div>
+            <div class="card-links">
+              <a href="https://github.com/CarlSome123/neural-net-scratch" target="_blank" title="GitHub">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              </a>
+            </div>
+          </div>
+          <h4>Neural Net from Scratch</h4>
+          <p>A feedforward neural network built with only NumPy — no PyTorch, no TensorFlow. Implements backpropagation, mini-batch gradient descent, and multiple activation functions. Trained on MNIST to 97%+ accuracy.</p>
+          <div class="tags">
+            <span>Python</span><span>NumPy</span><span>Machine Learning</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="skills">
+    <div class="section-inner">
+      <h3 class="section-label">Skills</h3>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <h5>Languages</h5>
+          <div class="skill-chips">
+            <span>Python</span><span>JavaScript</span><span>Java</span><span>C</span><span>SQL</span><span>HTML/CSS</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h5>Frameworks & Tools</h5>
+          <div class="skill-chips">
+            <span>Django</span><span>React</span><span>Git</span><span>PostgreSQL</span><span>Linux</span><span>Docker</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h5>Concepts</h5>
+          <div class="skill-chips">
+            <span>Data Structures</span><span>Algorithms</span><span>OOP</span><span>REST APIs</span><span>Machine Learning</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact">
+    <div class="section-inner">
+      <h3 class="section-label">Contact</h3>
+      <p class="contact-sub">Open to internships, research, and interesting side projects.</p>
+      <div class="contact-links">
+        <a href="mailto:cafakh@outlook.com" class="btn btn-primary">Email me</a>
+        <a href="https://github.com/CarlSome123" target="_blank" class="btn btn-ghost">GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>Built by Carl Fakhir &mdash; <a href="https://github.com/CarlSome123/CarlSome123.github.io" target="_blank">source</a></span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
