@@ -39,18 +39,14 @@
       </div>
     </div>
     <div class="hero-art">
-      <pre class="code-block">
-<span class="kw">def</span> <span class="fn">carl</span>():
-    <span class="kw">return</span> {
-        <span class="str">"role"</span>: <span class="str">"CS student"</span>,
-        <span class="str">"school"</span>: <span class="str">"Georgia Tech"</span>,
-        <span class="str">"interests"</span>: [
-            <span class="str">"systems"</span>,
-            <span class="str">"machine learning"</span>,
-            <span class="str">"web dev"</span>,
-        ],
-        <span class="str">"coffee"</span>: <span class="kw">True</span>,
-    }</pre>
+      <div class="tetris-widget">
+        <span class="tetris-label">// hobby: tetris</span>
+        <canvas id="tetris" width="200" height="400"></canvas>
+        <div class="tetris-meta">
+          <span class="tetris-score">SCORE: <span id="tetris-score-val">0000</span></span>
+          <span class="tetris-hint">↑ rotate · ↓ drop · ← → move · space: hard drop</span>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -86,6 +82,10 @@
           <div class="fact">
             <span class="fact-num">ATL</span>
             <span class="fact-label">Based in Atlanta, GA</span>
+          </div>
+          <div class="fact">
+            <span class="fact-num">40+</span>
+            <span class="fact-label">Tetris lines per minute</span>
           </div>
         </div>
       </div>
