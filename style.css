@@ -200,8 +200,9 @@ section { padding: 6rem 8vw; }
   content: '';
   flex: 1;
   height: 1px;
-  background: var(--border);
+  background: linear-gradient(to right, var(--accent), transparent);
   max-width: 260px;
+  opacity: 0.4;
 }
 
 /* ── About ── */
@@ -399,6 +400,38 @@ footer {
 
 .tetris-score { color: var(--accent); }
 .tetris-hint  { color: var(--muted); }
+
+/* ── Tetris-colored project card accents ── */
+.projects-grid .project-card:nth-child(1) { border-left: 3px solid var(--t-cyan);   }
+.projects-grid .project-card:nth-child(2) { border-left: 3px solid var(--t-purple); }
+.projects-grid .project-card:nth-child(3) { border-left: 3px solid var(--t-orange); }
+.projects-grid .project-card:nth-child(4) { border-left: 3px solid var(--t-green);  }
+.projects-grid .project-card:nth-child(5) { border-left: 3px solid var(--t-yellow); }
+.projects-grid .project-card:nth-child(6) { border-left: 3px solid var(--t-red);    }
+
+.projects-grid .project-card:nth-child(1):hover { border-color: var(--t-cyan);   box-shadow: 0 4px 20px rgba(0,240,240,0.12); }
+.projects-grid .project-card:nth-child(2):hover { border-color: var(--t-purple); box-shadow: 0 4px 20px rgba(160,0,240,0.12); }
+.projects-grid .project-card:nth-child(3):hover { border-color: var(--t-orange); box-shadow: 0 4px 20px rgba(240,160,0,0.12); }
+.projects-grid .project-card:nth-child(4):hover { border-color: var(--t-green);  box-shadow: 0 4px 20px rgba(0,240,0,0.12);   }
+.projects-grid .project-card:nth-child(5):hover { border-color: var(--t-yellow); box-shadow: 0 4px 20px rgba(240,240,0,0.12); }
+.projects-grid .project-card:nth-child(6):hover { border-color: var(--t-red);    box-shadow: 0 4px 20px rgba(240,0,0,0.12);   }
+
+/* ── Tetris-colored skill chip groups ── */
+.skills-grid .skill-group:nth-child(1) .skill-chips span {
+  border-color: rgba(0,240,240,0.3);
+  color: var(--t-cyan);
+  background: rgba(0,240,240,0.06);
+}
+.skills-grid .skill-group:nth-child(2) .skill-chips span {
+  border-color: rgba(240,160,0,0.3);
+  color: var(--t-orange);
+  background: rgba(240,160,0,0.06);
+}
+.skills-grid .skill-group:nth-child(3) .skill-chips span {
+  border-color: rgba(160,0,240,0.3);
+  color: var(--t-purple);
+  background: rgba(160,0,240,0.06);
+}
 
 /* ── Responsive ── */
 @media (max-width: 768px) {
