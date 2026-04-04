@@ -263,7 +263,7 @@ section { padding: 6rem 8vw; }
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  transition: border-color 0.2s, transform 0.2s;
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
 }
 .project-card:hover {
   border-color: var(--accent2);
@@ -409,12 +409,12 @@ footer {
 .projects-grid .project-card:nth-child(5) { border-left: 3px solid var(--t-yellow); }
 .projects-grid .project-card:nth-child(6) { border-left: 3px solid var(--t-red);    }
 
-.projects-grid .project-card:nth-child(1):hover { border-color: var(--t-cyan);   box-shadow: 0 4px 20px rgba(0,240,240,0.12); }
-.projects-grid .project-card:nth-child(2):hover { border-color: var(--t-purple); box-shadow: 0 4px 20px rgba(160,0,240,0.12); }
-.projects-grid .project-card:nth-child(3):hover { border-color: var(--t-orange); box-shadow: 0 4px 20px rgba(240,160,0,0.12); }
-.projects-grid .project-card:nth-child(4):hover { border-color: var(--t-green);  box-shadow: 0 4px 20px rgba(0,240,0,0.12);   }
-.projects-grid .project-card:nth-child(5):hover { border-color: var(--t-yellow); box-shadow: 0 4px 20px rgba(240,240,0,0.12); }
-.projects-grid .project-card:nth-child(6):hover { border-color: var(--t-red);    box-shadow: 0 4px 20px rgba(240,0,0,0.12);   }
+.projects-grid .project-card:nth-child(1):hover { border-left-color: var(--t-cyan);   box-shadow: 0 4px 20px rgba(0,240,240,0.12); transform: translateY(-2px); }
+.projects-grid .project-card:nth-child(2):hover { border-left-color: var(--t-purple); box-shadow: 0 4px 20px rgba(160,0,240,0.12); transform: translateY(-2px); }
+.projects-grid .project-card:nth-child(3):hover { border-left-color: var(--t-orange); box-shadow: 0 4px 20px rgba(240,160,0,0.12); transform: translateY(-2px); }
+.projects-grid .project-card:nth-child(4):hover { border-left-color: var(--t-green);  box-shadow: 0 4px 20px rgba(0,240,0,0.12);   transform: translateY(-2px); }
+.projects-grid .project-card:nth-child(5):hover { border-left-color: var(--t-yellow); box-shadow: 0 4px 20px rgba(240,240,0,0.12); transform: translateY(-2px); }
+.projects-grid .project-card:nth-child(6):hover { border-left-color: var(--t-red);    box-shadow: 0 4px 20px rgba(240,0,0,0.12);   transform: translateY(-2px); }
 
 /* ── Tetris-colored skill chip groups ── */
 .skills-grid .skill-group:nth-child(1) .skill-chips span {
