@@ -225,7 +225,7 @@ fadeEls.forEach(el => {
   }
 
   // Track canvas visibility so arrow keys don't block page scroll
-  let canvasVisible = true;
+  let canvasVisible = false;
   new IntersectionObserver(([entry]) => {
     canvasVisible = entry.isIntersecting;
   }, { threshold: 0.1 }).observe(canvas);
