@@ -13,6 +13,13 @@
   --green: #3fb950;
   --font: 'Inter', sans-serif;
   --mono: 'JetBrains Mono', monospace;
+  --t-cyan:   #00f0f0;
+  --t-yellow: #f0f000;
+  --t-purple: #a000f0;
+  --t-green:  #00f000;
+  --t-red:    #f00000;
+  --t-blue:   #0000f0;
+  --t-orange: #f0a000;
 }
 
 html { scroll-behavior: smooth; }
@@ -357,6 +364,41 @@ footer {
   color: var(--muted);
   font-family: var(--mono);
 }
+
+/* ── Tetris Widget ── */
+.tetris-widget {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.tetris-label {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--muted);
+  align-self: flex-start;
+}
+
+#tetris {
+  display: block;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  cursor: pointer;
+}
+
+.tetris-meta {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+}
+
+.tetris-score { color: var(--accent); }
+.tetris-hint  { color: var(--muted); }
 
 /* ── Responsive ── */
 @media (max-width: 768px) {
