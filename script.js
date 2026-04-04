@@ -38,6 +38,7 @@ fadeEls.forEach(el => {
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
   const scoreEl = document.getElementById('tetris-score-val');
+  if (!scoreEl) return;
 
   const COLS = 10, ROWS = 20, S = 20;
 
@@ -223,9 +224,15 @@ fadeEls.forEach(el => {
     animId = requestAnimationFrame(loop);
   }
 
+  // Track canvas visibility so arrow keys don't block page scroll
+  let canvasVisible = true;
+  new IntersectionObserver(([entry]) => {
+    canvasVisible = entry.isIntersecting;
+  }, { threshold: 0.1 }).observe(canvas);
+
   // Keyboard controls
   document.addEventListener('keydown', e => {
-    if (isGameOver || paused) return;
+    if (isGameOver || paused || !canvasVisible) return;
     const preventKeys = ['ArrowLeft','ArrowRight','ArrowUp','ArrowDown',' '];
     if (preventKeys.includes(e.key)) e.preventDefault();
     if (e.key === 'ArrowLeft'  && isValid(piece.shape, piece.x - 1, piece.y)) piece.x--;
