@@ -136,7 +136,11 @@ fadeEls.forEach(el => {
     // Clip to rounded corners to match CSS border-radius
     ctx.save();
     ctx.beginPath();
-    ctx.roundRect(0, 0, canvas.width, canvas.height, 12);
+    if (ctx.roundRect) {
+      ctx.roundRect(0, 0, canvas.width, canvas.height, 12);
+    } else {
+      ctx.rect(0, 0, canvas.width, canvas.height);
+    }
     ctx.clip();
 
     // Background

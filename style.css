@@ -266,7 +266,7 @@ section { padding: 6rem 8vw; }
   transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
 }
 .project-card:hover {
-  border-color: var(--accent2);
+  border-left-color: var(--accent2);
   transform: translateY(-2px);
 }
 
