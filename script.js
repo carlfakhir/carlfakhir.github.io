@@ -253,27 +253,49 @@ fadeEls.forEach(el => {
     }
   });
 
-  // Touch/click zones: left third = left, right third = right, bottom third = hard drop, center top = rotate
-  canvas.addEventListener('click', e => {
+  // Desktop: click to restart after game over
+  canvas.addEventListener('click', () => { if (isGameOver) reset(); });
+
+  // Mobile touch controls
+  let touchStartX = 0, touchStartY = 0, touchLastX = 0;
+
+  canvas.addEventListener('touchstart', e => {
+    e.preventDefault();
+    const t = e.touches[0];
+    touchStartX = touchLastX = t.clientX;
+    touchStartY = t.clientY;
+  }, { passive: false });
+
+  canvas.addEventListener('touchmove', e => {
+    e.preventDefault();
+    if (isGameOver || paused) return;
+    const t = e.touches[0];
+    const cellW = canvas.getBoundingClientRect().width / COLS;
+    const dx = t.clientX - touchLastX;
+    if (Math.abs(dx) >= cellW) {
+      const dir = dx > 0 ? 1 : -1;
+      if (isValid(piece.shape, piece.x + dir, piece.y)) piece.x += dir;
+      touchLastX += dir * cellW;
+    }
+  }, { passive: false });
+
+  canvas.addEventListener('touchend', e => {
+    e.preventDefault();
+    const t = e.changedTouches[0];
     if (isGameOver) { reset(); return; }
-    const rect = canvas.getBoundingClientRect();
-    const scaleX = canvas.width  / rect.width;
-    const scaleY = canvas.height / rect.height;
-    const cx = (e.clientX - rect.left) * scaleX;
-    const cy = (e.clientY - rect.top)  * scaleY;
-    if (cy > canvas.height * 0.67) {
+    const dx = t.clientX - touchStartX;
+    const dy = t.clientY - touchStartY;
+    if (Math.abs(dx) < 10 && Math.abs(dy) < 10) {
+      // Tap: rotate
+      const r = rotate(piece.shape);
+      if (isValid(r, piece.x, piece.y)) piece.shape = r;
+    } else if (dy > 40 && Math.abs(dy) > Math.abs(dx)) {
+      // Swipe down: hard drop
       while (isValid(piece.shape, piece.x, piece.y + 1)) piece.y++;
       place();
       lastDrop = performance.now();
-    } else if (cx < canvas.width * 0.33) {
-      if (isValid(piece.shape, piece.x - 1, piece.y)) piece.x--;
-    } else if (cx > canvas.width * 0.67) {
-      if (isValid(piece.shape, piece.x + 1, piece.y)) piece.x++;
-    } else {
-      const r = rotate(piece.shape);
-      if (isValid(r, piece.x, piece.y)) piece.shape = r;
     }
-  });
+  }, { passive: false });
 
   // Pause when tab hidden
   document.addEventListener('visibilitychange', () => {
