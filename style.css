@@ -465,4 +465,6 @@ footer {
   .tetris-widget { width: 100%; align-items: center; }
   #tetris { max-width: 200px; }
   .tetris-hint { display: none; }
+  .tetris-label { align-self: center; }
+  .tetris-meta { max-width: 200px; }
 }
