@@ -461,4 +461,8 @@ footer {
   }
 
   nav ul { gap: 1rem; }
+
+  .tetris-widget { width: 100%; align-items: center; }
+  #tetris { max-width: 200px; }
+  .tetris-hint { display: none; }
 }
