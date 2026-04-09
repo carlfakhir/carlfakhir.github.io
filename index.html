@@ -28,8 +28,8 @@
       <h1>Carl Fakhir</h1>
       <h2>CS student <span class="accent">@</span> Georgia Tech</h2>
       <p class="hero-sub">
-        I build things that are useful, occasionally fun, and hopefully fast.
-        Interested in systems, ML, and full-stack web.
+        I build local-first tools, data-heavy products, and systems that make messy workflows feel obvious.
+        Interested in systems, ML, and full-stack product engineering.
       </p>
       <div class="hero-cta">
         <a href="#projects" class="btn btn-primary">See my work</a>
@@ -57,35 +57,33 @@
       <div class="about-grid">
         <div class="about-text">
           <p>
-            I'm a Computer Science student at Georgia Tech, where I've been learning to
-            appreciate both the elegance of algorithms and the chaos of debugging production code at 2am.
+            I'm a Computer Science student at Georgia Tech who likes building products with a strong technical core:
+            systems that have to reason, visualize, predict, or make complicated data easier to use.
           </p>
           <p>
-            My projects tend to live at the intersection of things I find annoying and things I think
-            could be automated. When I'm not writing code, I'm probably listening to music, which is
-            also why I built a Spotify analytics app.
+            Lately that has meant cloud cost attribution, browser-based ML, and local-first software.
+            I like projects where the underlying idea is a little weird but the product still feels crisp and practical.
           </p>
           <p>
-            Currently exploring systems programming, data-driven applications, and anything that
-            requires more thinking than Googling.
+            I'm especially interested in infrastructure, applied ML, developer tools, and products that sit somewhere between research prototype and usable software.
           </p>
         </div>
         <div class="about-facts">
           <div class="fact">
-            <span class="fact-num">5</span>
-            <span class="fact-label">GitHub repos (and counting)</span>
+            <span class="fact-num">7+</span>
+            <span class="fact-label">Public projects worth showing</span>
           </div>
           <div class="fact">
-            <span class="fact-num">∞</span>
-            <span class="fact-label">Stack Overflow tabs open</span>
+            <span class="fact-num">ML</span>
+            <span class="fact-label">Browser-side inference, ranking, and prediction</span>
           </div>
           <div class="fact">
             <span class="fact-num">ATL</span>
             <span class="fact-label">Based in Atlanta, GA</span>
           </div>
           <div class="fact">
-            <span class="fact-num">40+</span>
-            <span class="fact-label">Tetris lines per minute</span>
+            <span class="fact-num">Local</span>
+            <span class="fact-label">Big bias toward privacy-first, local-first tools</span>
           </div>
         </div>
       </div>
@@ -99,6 +97,22 @@
       <div class="projects-grid">
 
         <div class="project-card featured">
+          <div class="card-top">
+            <div class="card-icon">&#129504;</div>
+            <div class="card-links">
+              <a href="https://github.com/carlfakhir/synapse" target="_blank" title="GitHub">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              </a>
+            </div>
+          </div>
+          <h4>Synapse</h4>
+          <p>A local-first notes app where connections behave more like human memory than static backlinks. It runs embeddings in the browser, ranks related notes with spreading activation and decay, shows a live graph view, and can connect directly to a local markdown folder on disk.</p>
+          <div class="tags">
+            <span>Next.js</span><span>TypeScript</span><span>Web Workers</span><span>transformers.js</span><span>Local-first</span>
+          </div>
+        </div>
+
+        <div class="project-card">
           <div class="card-top">
             <div class="card-icon">&#9729;</div>
             <div class="card-links">
@@ -156,7 +170,7 @@
             </div>
           </div>
           <h4>Spotify Wrapper</h4>
-          <p>A full-stack Django web app that visualizes your Spotify listening habits: top tracks, artists, genres, and mood trends across short, medium, and long time ranges. Supports duo comparisons and LLM-generated personality summaries.</p>
+          <p>A full-stack Django web app that visualizes Spotify listening habits: top tracks, artists, genres, and mood trends across short, medium, and long time ranges. Supports duo comparisons and LLM-generated personality summaries.</p>
           <div class="tags">
             <span>Python</span><span>Django</span><span>Spotify API</span><span>PostgreSQL</span>
           </div>
@@ -206,19 +220,19 @@
         <div class="skill-group">
           <h5>Languages</h5>
           <div class="skill-chips">
-            <span>Python</span><span>JavaScript</span><span>Java</span><span>C</span><span>SQL</span><span>HTML/CSS</span>
+            <span>Python</span><span>TypeScript</span><span>JavaScript</span><span>Java</span><span>C</span><span>SQL</span>
           </div>
         </div>
         <div class="skill-group">
           <h5>Frameworks & Tools</h5>
           <div class="skill-chips">
-            <span>Django</span><span>React</span><span>Git</span><span>PostgreSQL</span><span>Linux</span><span>Docker</span>
+            <span>Next.js</span><span>Django</span><span>React</span><span>Docker</span><span>PostgreSQL</span><span>AWS</span>
           </div>
         </div>
         <div class="skill-group">
           <h5>Concepts</h5>
           <div class="skill-chips">
-            <span>Data Structures</span><span>Algorithms</span><span>OOP</span><span>REST APIs</span><span>Machine Learning</span>
+            <span>Distributed Systems</span><span>Machine Learning</span><span>Local-first Software</span><span>Data Structures</span><span>Algorithms</span>
           </div>
         </div>
       </div>
@@ -229,7 +243,7 @@
   <section id="contact" class="contact">
     <div class="section-inner">
       <h3 class="section-label">Contact</h3>
-      <p class="contact-sub">Open to internships, research, and interesting side projects.</p>
+      <p class="contact-sub">Open to internships, research, startups, and technically serious side projects.</p>
       <div class="contact-links">
         <a href="mailto:cafakh@outlook.com" class="btn btn-primary">Email me</a>
         <a href="https://www.linkedin.com/in/carl-fakhir/" target="_blank" class="btn btn-ghost">LinkedIn</a>
