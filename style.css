@@ -449,6 +449,7 @@ footer {
 .link-pill-landing:hover { color: var(--t-cyan);   border-color: rgba(0,240,240,0.5);  background: rgba(0,240,240,0.06); }
 .link-pill-app:hover     { color: var(--t-green);  border-color: rgba(0,240,0,0.5);    background: rgba(0,240,0,0.06); }
 .link-pill-code:hover    { color: var(--t-orange); border-color: rgba(240,160,0,0.5);  background: rgba(240,160,0,0.06); }
+.link-pill-demo:hover    { color: var(--t-purple); border-color: rgba(160,0,240,0.5);  background: rgba(160,0,240,0.06); }
 
 /* YC badge on Optimis card */
 .badge-yc {
