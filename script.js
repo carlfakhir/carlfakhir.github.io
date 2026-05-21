@@ -168,7 +168,7 @@ const isFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').ma
   });
 
   // hover state
-  document.querySelectorAll('a, button, [data-tilt], .btn, #tetris').forEach(node => {
+  document.querySelectorAll('a, button, [data-tilt], .btn, #tetris, .chip, .stack-filter').forEach(node => {
     node.addEventListener('mouseenter', () => el.classList.add('is-hover'));
     node.addEventListener('mouseleave', () => el.classList.remove('is-hover'));
   });
@@ -249,6 +249,52 @@ const isFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').ma
     el.classList.add('fade-in');
     el.style.transitionDelay = `${Math.min(i * 50, 250)}ms`;
     fadeObs.observe(el);
+  });
+})();
+
+// ─────────────────────────────────────────────────────────
+// Stack matrix — filter pills + animated chip filtering
+// ─────────────────────────────────────────────────────────
+(function stackMatrix() {
+  const matrix = document.getElementById('stack-matrix');
+  if (!matrix) return;
+  const chips = Array.from(matrix.querySelectorAll('.chip'));
+  const filters = document.querySelectorAll('.stack-filter');
+  const totalEl = document.getElementById('stack-total');
+  const countEl = document.getElementById('stack-count');
+
+  // counts per category
+  const counts = { all: chips.length };
+  chips.forEach(chip => {
+    (chip.dataset.cats || '').split(/\s+/).filter(Boolean).forEach(cat => {
+      counts[cat] = (counts[cat] || 0) + 1;
+    });
+  });
+  document.querySelectorAll('.stack-filter .ct').forEach(el => {
+    const cat = el.dataset.count;
+    el.textContent = counts[cat] ?? 0;
+  });
+  if (totalEl) totalEl.textContent = chips.length;
+  if (countEl) countEl.textContent = chips.length;
+
+  function applyFilter(cat) {
+    let visible = 0;
+    chips.forEach((chip, i) => {
+      const cats = (chip.dataset.cats || '').split(/\s+/);
+      const match = cat === 'all' || cats.includes(cat);
+      chip.classList.toggle('is-dim', !match);
+      chip.style.transitionDelay = match ? `${Math.min(i * 8, 120)}ms` : '0ms';
+      if (match) visible++;
+    });
+    if (countEl) countEl.textContent = visible;
+  }
+
+  filters.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filters.forEach(b => b.classList.remove('is-active'));
+      btn.classList.add('is-active');
+      applyFilter(btn.dataset.filter);
+    });
   });
 })();
 
