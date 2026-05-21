@@ -3,320 +3,603 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Carl Fakhir</title>
+  <title>Carl Fakhir — systems, ml, tools</title>
+  <meta name="description" content="Carl Fakhir — CS at Georgia Tech. Systems, ML, and local-first tools. Currently co-founding Optimis." />
   <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=Geist+Mono:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <span class="nav-logo">cf.</span>
+  <!-- 3D background canvas -->
+  <canvas class="bg-3d" id="bg-3d" aria-hidden="true"></canvas>
+  <div class="bg-vignette" aria-hidden="true"></div>
+  <div class="bg-grain" aria-hidden="true"></div>
+
+  <!-- Custom cursor -->
+  <div class="cursor" id="cursor" aria-hidden="true">
+    <div class="cursor-dot"></div>
+    <div class="cursor-ring"></div>
+  </div>
+
+  <!-- Top bar -->
+  <header class="topbar">
+    <a href="#top" class="mark">
+      <span class="mark-dot"></span>
+      <span class="mark-text">Carl Fakhir</span>
+    </a>
+    <div class="topbar-status">
+      <span class="pulse"></span>
+      <span>Currently @ NVIDIA · Santa Clara, CA</span>
+      <span class="sep">/</span>
+      <span class="time" id="atl-time">--:--:-- PT</span>
+    </div>
+    <a href="Carl_Fakhir_resume.pdf" download class="topbar-cv">
+      <span>Résumé</span>
+      <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    </a>
+  </header>
+
+  <!-- Side rail nav -->
+  <nav class="rail" aria-label="Section navigation">
     <ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#top" data-rail="top"><span class="rail-no">00</span><span class="rail-lbl">Intro</span></a></li>
+      <li><a href="#about" data-rail="about"><span class="rail-no">01</span><span class="rail-lbl">About</span></a></li>
+      <li><a href="#work" data-rail="work"><span class="rail-no">02</span><span class="rail-lbl">Work</span></a></li>
+      <li><a href="#stack" data-rail="stack"><span class="rail-no">03</span><span class="rail-lbl">Stack</span></a></li>
+      <li><a href="#contact" data-rail="contact"><span class="rail-no">04</span><span class="rail-lbl">Contact</span></a></li>
     </ul>
   </nav>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-content">
-      <p class="hero-greeting">Hi, I'm</p>
-      <h1>Carl Fakhir</h1>
-      <h2>CS student <span class="accent">@</span> Georgia Tech</h2>
-      <p class="hero-sub">
-        I build local-first tools, data-heavy products, and systems that make messy workflows feel obvious.
-        Interested in systems, ML, and full-stack product engineering.
-      </p>
-      <div class="hero-cta">
-        <a href="#projects" class="btn btn-primary">See my work</a>
-        <a href="https://github.com/carlfakhir" target="_blank" class="btn btn-ghost">GitHub</a>
-        <a href="https://www.linkedin.com/in/carl-fakhir/" target="_blank" class="btn btn-ghost">LinkedIn</a>
-        <a href="Carl_Fakhir_resume.pdf" download class="btn btn-ghost">Resume</a>
-      </div>
-    </div>
-    <div class="hero-art">
-      <div class="tetris-widget">
-        <span class="tetris-label">// hobby: tetris</span>
-        <canvas id="tetris" width="200" height="400"></canvas>
-        <div class="tetris-meta">
-          <span class="tetris-score">SCORE: <span id="tetris-score-val">0000</span></span>
-          <span class="tetris-hint">↑ rotate · ↓ drop · ← → move · space: hard drop</span>
-        </div>
-      </div>
-    </div>
-  </section>
+  <main>
 
-  <!-- ABOUT -->
-  <section id="about" class="about">
-    <div class="section-inner">
-      <h3 class="section-label">About</h3>
+    <!-- HERO -->
+    <section id="top" class="hero">
+      <div class="hero-grid">
+        <div class="hero-left">
+          <div class="hero-tag">
+            <span class="hero-tag-bracket">[</span>
+            <span class="hero-tag-text">PORTFOLIO · v3 · MMXXVI</span>
+            <span class="hero-tag-bracket">]</span>
+          </div>
+
+          <h1 class="hero-name" data-text-line="1">
+            <span class="extrude">Carl</span>
+          </h1>
+          <h1 class="hero-name hero-name-2" data-text-line="2">
+            <span class="extrude">Fakhir.</span>
+          </h1>
+
+          <p class="hero-role">
+            <span class="hero-role-meta">/* now */</span>
+            CS at <em>Georgia Tech</em>, co&#8209;founding <em>Optimis</em>,
+            currently at <em>NVIDIA</em> for the summer.
+          </p>
+
+          <p class="hero-lede">
+            I build at the seams of AI infrastructure, applied ML, cloud platforms,
+            and the low&#8209;level plumbing that keeps it all honest.
+            Lately that has looked like per&#8209;PR cost attribution for engineering teams,
+            browser&#8209;side RAG over your own notes, GPU&#8209;cluster orchestration in Rust and C++,
+            and quant research stacks that mirror the way real ones work.
+            If a tool needs a README to justify its existence, something has gone wrong upstream.
+          </p>
+
+          <div class="hero-cta">
+            <a href="#work" class="btn btn-lime">
+              <span>See the work</span>
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+            <a href="mailto:cfakhir3@gatech.edu" class="btn btn-ghost">Get in touch</a>
+            <a href="https://github.com/carlfakhir" target="_blank" class="btn btn-ghost">GitHub ↗</a>
+            <a href="https://www.linkedin.com/in/carl-fakhir/" target="_blank" class="btn btn-ghost">LinkedIn ↗</a>
+          </div>
+
+          <div class="hero-strip" aria-hidden="true">
+            <span>FastAPI</span><span class="dot">·</span>
+            <span>Next.js</span><span class="dot">·</span>
+            <span>Supabase</span><span class="dot">·</span>
+            <span>PyTorch</span><span class="dot">·</span>
+            <span>WebGL</span><span class="dot">·</span>
+            <span>Local-first</span><span class="dot">·</span>
+            <span>Distributed systems</span><span class="dot">·</span>
+            <span>Applied ML</span><span class="dot">·</span>
+            <span>FastAPI</span><span class="dot">·</span>
+            <span>Next.js</span><span class="dot">·</span>
+            <span>Supabase</span><span class="dot">·</span>
+            <span>PyTorch</span><span class="dot">·</span>
+          </div>
+        </div>
+
+        <aside class="hero-right" data-tilt data-tilt-max="9">
+          <div class="tetris-card" data-tilt-inner>
+            <header class="tetris-card-head">
+              <div class="tetris-card-dots"><span></span><span></span><span></span></div>
+              <span class="tetris-card-title">~/diversion.exe</span>
+              <span class="tetris-card-meta">FIG. 01</span>
+            </header>
+            <div class="tetris-card-body">
+              <canvas id="tetris" width="200" height="400"></canvas>
+              <div class="tetris-overlays">
+                <span class="tetris-corner tl"></span>
+                <span class="tetris-corner tr"></span>
+                <span class="tetris-corner bl"></span>
+                <span class="tetris-corner br"></span>
+              </div>
+            </div>
+            <footer class="tetris-card-foot">
+              <span class="tetris-score">SCORE <em id="tetris-score-val">0000</em></span>
+              <span class="tetris-hint">
+                <span>↑&nbsp;rot</span>
+                <span>←→&nbsp;move</span>
+                <span>↓&nbsp;soft</span>
+                <span>␣&nbsp;hard</span>
+              </span>
+            </footer>
+          </div>
+        </aside>
+      </div>
+
+      <div class="hero-scroll" aria-hidden="true">
+        <span>scroll</span>
+        <span class="hero-scroll-line"></span>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="chapter">
+      <div class="chap-head">
+        <span class="chap-no">§01 / about</span>
+        <h2 class="chap-title">
+          A short biography, <em>mostly true.</em>
+        </h2>
+      </div>
+
       <div class="about-grid">
-        <div class="about-text">
-          <p>
-            I'm a Computer Science student at Georgia Tech who likes building products with a strong technical core:
-            systems that have to reason, visualize, predict, or make complicated data easier to use.
+        <div class="about-body">
+          <p class="lead">
+            I’m a CS student at Georgia Tech who likes building products with a strong technical core: systems that have to reason, visualize, predict, or make complicated data easier to use. The fun for me sits somewhere between an honest research prototype and a piece of software you actually want to keep open.
           </p>
           <p>
-            Lately that has meant cloud cost attribution, browser-based ML, and local-first software.
-            I like projects where the underlying idea is a little weird but the product still feels crisp and practical.
+            Day to day that has looked like cloud cost attribution, browser-side ML, and local-first software. I like projects where the underlying idea is a little weird but the product still feels crisp and practical.
           </p>
           <p>
-            I'm especially interested in infrastructure, applied ML, developer tools, and products that sit somewhere between research prototype and usable software.
+            I’m especially drawn to applied ML, AI infrastructure, developer tools, and the part of a product where research becomes opinion. <em>Opinionated</em> beats <em>configurable</em> almost every time.
           </p>
         </div>
-        <div class="about-facts">
-          <div class="fact">
-            <span class="fact-num">10+</span>
-            <span class="fact-label">Public projects worth showing</span>
+
+        <aside class="about-stats">
+          <div class="stat-card" data-tilt data-tilt-max="6">
+            <span class="stat-k">Studies</span>
+            <span class="stat-v">CS @ Georgia Tech</span>
           </div>
-          <div class="fact">
-            <span class="fact-num">ML</span>
-            <span class="fact-label">Browser-side inference, ranking, and prediction</span>
+          <div class="stat-card" data-tilt data-tilt-max="6">
+            <span class="stat-k">Building</span>
+            <span class="stat-v">Optimis</span>
+            <span class="stat-meta">cloud cost attribution · YC '26 track</span>
           </div>
-          <div class="fact">
-            <span class="fact-num">ATL</span>
-            <span class="fact-label">Based in Atlanta, GA</span>
+          <div class="stat-card" data-tilt data-tilt-max="6">
+            <span class="stat-k">Currently</span>
+            <span class="stat-v">NVIDIA</span>
+            <span class="stat-meta">summer ’26 intern · cloud platform · Rust + C++ · Envoy · Kafka · K8s · Santa Clara</span>
           </div>
-          <div class="fact">
-            <span class="fact-num">Local</span>
-            <span class="fact-label">Big bias toward privacy-first, local-first tools</span>
+          <div class="stat-card" data-tilt data-tilt-max="6">
+            <span class="stat-k">Lives</span>
+            <span class="stat-v">Atlanta, GA</span>
+            <span class="stat-meta">33.7490° N · 84.3880° W</span>
           </div>
-        </div>
+        </aside>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- PROJECTS -->
-  <section id="projects" class="projects">
-    <div class="section-inner">
-      <h3 class="section-label">Projects</h3>
-      <div class="projects-grid">
+    <!-- WORK -->
+    <section id="work" class="chapter">
+      <div class="chap-head">
+        <span class="chap-no">§02 / work</span>
+        <h2 class="chap-title">
+          Selected projects, in roughly the order I’m <em>proud of them.</em>
+        </h2>
+      </div>
 
-        <div class="project-card featured">
-          <div class="card-top">
-            <div class="card-icon">&#9889;</div>
-            <div class="card-links card-links-labeled">
-              <a href="https://optimislanding.vercel.app/" target="_blank" title="Marketing site" class="link-pill link-pill-landing">
-                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      <ol class="entries">
+
+        <li class="entry entry-featured" data-tilt data-tilt-max="5" style="--tet:#00d4d4">
+          <div class="entry-inner" data-tilt-inner>
+            <div class="entry-shine" aria-hidden="true"></div>
+            <header class="entry-head">
+              <div class="entry-meta">
+                <span class="entry-no">001</span>
+                <span class="entry-kind">venture · founding eng</span>
+                <span class="entry-year">2025 — ongoing</span>
+              </div>
+              <span class="entry-badge">
+                <span class="entry-badge-dot"></span>
+                CreateX Launch · Gold Ticket · $5K funding + $200K resources
+              </span>
+            </header>
+            <h3 class="entry-title">Optimis</h3>
+            <p class="entry-lede">
+              Cloud cost attribution for engineering teams. We ingest AWS Cost &amp; Usage Reports, map spend to services <em>and</em> the pull requests that ship them via static analysis of the deploying repo, and hand engineers a per-PR dollar delta instead of a monthly bill that nobody opens.
+            </p>
+            <div class="entry-stack">
+              <span class="entry-stack-k">Stack</span>
+              <span>FastAPI</span><span>Rust (CUR ingest)</span><span>Next.js</span><span>Supabase / Postgres</span><span>Vercel</span><span>AWS · CUR</span><span>Terraform</span><span>OpenTelemetry</span><span>tree-sitter</span><span>VS Code extension API</span>
+            </div>
+            <div class="entry-links">
+              <a href="https://optimislanding.vercel.app/" target="_blank" class="elink">
+                <span class="elink-no">↗</span>
                 <span>Landing</span>
               </a>
-              <a href="https://optimis-labs.vercel.app/" target="_blank" title="Live product" class="link-pill link-pill-app">
-                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+              <a href="https://optimis-labs.vercel.app/" target="_blank" class="elink">
+                <span class="elink-no">↗</span>
                 <span>App</span>
               </a>
-              <a href="https://github.com/carlfakhir/optimis" target="_blank" title="Source on GitHub" class="link-pill link-pill-code">
-                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-                <span>Code</span>
+              <a href="https://github.com/carlfakhir/optimis" target="_blank" class="elink">
+                <span class="elink-no">↗</span>
+                <span>Source</span>
               </a>
             </div>
           </div>
-          <h4>Optimis <span class="badge-yc">CreateX Launch · Gold Ticket</span></h4>
-          <p>Co-founded venture. Selected for Georgia Tech's CreateX Launch program with a Gold Ticket — $5K in funding plus $150K in startup resources. Cloud cost attribution for engineering teams: ingests AWS Cost &amp; Usage Reports, maps spend to services and pull requests via static analysis of the deploying repo, and gives engineers per-PR dollar deltas instead of opaque monthly bills. Stack: FastAPI + Supabase, Next.js App Router on Vercel, daily CUR ingestion via cron, GitHub-integrated cost diffs in a VS Code extension.</p>
-          <div class="tags">
-            <span>FastAPI</span><span>Next.js</span><span>Supabase</span><span>Vercel</span><span>AWS CUR</span><span>Static Analysis</span>
-          </div>
-        </div>
+        </li>
 
-        <div class="project-card featured">
-          <div class="card-top">
-            <div class="card-icon">&#129504;</div>
-            <div class="card-links card-links-labeled">
-              <a href="https://drive.google.com/file/d/1V_9R9Hu5KkBan_kDJAyquQf6KpbAybeS/view?usp=sharing" target="_blank" title="Demo video" class="link-pill link-pill-demo">
-                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-                <span>Demo</span>
-              </a>
-              <a href="https://github.com/carlfakhir/synapse" target="_blank" title="Source on GitHub" class="link-pill link-pill-code">
-                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-                <span>Code</span>
-              </a>
+        <li class="entry entry-featured" data-tilt data-tilt-max="5" style="--tet:#a040d0">
+          <div class="entry-inner" data-tilt-inner>
+            <div class="entry-shine" aria-hidden="true"></div>
+            <header class="entry-head">
+              <div class="entry-meta">
+                <span class="entry-no">002</span>
+                <span class="entry-kind">local-first · browser ML</span>
+                <span class="entry-year">2025</span>
+              </div>
+            </header>
+            <h3 class="entry-title">Synapse</h3>
+            <p class="entry-lede">
+              A local-first notes app that does private RAG over your own writing. Embeddings run entirely in the browser via WebGPU, vectors live in an HNSW index on-device, and related notes are surfaced by spreading activation with decay instead of static backlinks. The graph view updates as you type, and the whole thing can mount a markdown folder on disk and treat it as the source of truth.
+            </p>
+            <div class="entry-stack">
+              <span class="entry-stack-k">Stack</span>
+              <span>Next.js</span><span>TypeScript</span><span>transformers.js</span><span>WebGPU</span><span>ONNX Runtime Web</span><span>HNSW (hnswlib-wasm)</span><span>Web Workers</span><span>IndexedDB</span><span>local-first RAG</span><span>sentence-transformers</span>
+            </div>
+            <div class="entry-links">
+              <a href="https://drive.google.com/file/d/1V_9R9Hu5KkBan_kDJAyquQf6KpbAybeS/view?usp=sharing" target="_blank" class="elink"><span class="elink-no">↗</span><span>Demo</span></a>
+              <a href="https://github.com/carlfakhir/synapse" target="_blank" class="elink"><span class="elink-no">↗</span><span>Source</span></a>
             </div>
           </div>
-          <h4>Synapse</h4>
-          <p>A local-first notes app where connections behave more like human memory than static backlinks. It runs embeddings in the browser, ranks related notes with spreading activation and decay, shows a live graph view, and can connect directly to a local markdown folder on disk.</p>
-          <div class="tags">
-            <span>Next.js</span><span>TypeScript</span><span>Web Workers</span><span>transformers.js</span><span>Local-first</span>
-          </div>
-        </div>
+        </li>
 
-        <div class="project-card">
-          <div class="card-top">
-            <div class="card-icon">&#128202;</div>
-            <div class="card-links">
-              <a href="https://github.com/carlfakhir/pairs-trading-backtest" target="_blank" title="GitHub">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-              </a>
+        <li class="entry" data-tilt data-tilt-max="6" style="--tet:#f08820">
+          <div class="entry-inner" data-tilt-inner>
+            <div class="entry-shine" aria-hidden="true"></div>
+            <header class="entry-head">
+              <div class="entry-meta">
+                <span class="entry-no">003</span>
+                <span class="entry-kind">quant research</span>
+                <span class="entry-year">2025</span>
+              </div>
+            </header>
+            <h3 class="entry-title">Pairs Trading Backtester</h3>
+            <p class="entry-lede">
+              Statistical-arbitrage research stack. Screens a 60+ ticker universe for cointegrated pairs (Engle–Granger + ADF + OU half-life), backtests a z-score mean-reversion strategy on a held-out window with realistic transaction costs, and reports per-pair and portfolio Sharpe, max drawdown, and hit rate. Train and test windows are walk-forward, never overlapping.
+            </p>
+            <div class="entry-stack">
+              <span class="entry-stack-k">Stack</span>
+              <span>Python</span><span>statsmodels</span><span>pandas</span><span>NumPy</span><span>Polars</span><span>walk-forward CV</span><span>Engle–Granger</span>
+            </div>
+            <div class="entry-links">
+              <a href="https://github.com/carlfakhir/pairs-trading-backtest" target="_blank" class="elink"><span class="elink-no">↗</span><span>Source</span></a>
             </div>
           </div>
-          <h4>Pairs Trading Backtester</h4>
-          <p>Statistical-arbitrage research stack. Screens a 60+ ticker universe for cointegrated pairs (Engle-Granger + ADF on the residual + OU half-life filter), backtests a z-score mean-reversion strategy on a held-out window with realistic transaction costs, and reports per-pair and portfolio Sharpe / max DD / hit rate. Designed to mirror an honest quant-research workflow — train and test windows are walk-forward, never overlapping.</p>
-          <div class="tags">
-            <span>Python</span><span>statsmodels</span><span>pandas</span><span>NumPy</span><span>Quant Research</span>
-          </div>
-        </div>
+        </li>
 
-        <div class="project-card">
-          <div class="card-top">
-            <div class="card-icon">&#128176;</div>
-            <div class="card-links">
-              <a href="https://github.com/carlfakhir/crypto-arb-scanner" target="_blank" title="GitHub">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-              </a>
+        <li class="entry" data-tilt data-tilt-max="6" style="--tet:#28b048">
+          <div class="entry-inner" data-tilt-inner>
+            <div class="entry-shine" aria-hidden="true"></div>
+            <header class="entry-head">
+              <div class="entry-meta">
+                <span class="entry-no">004</span>
+                <span class="entry-kind">market microstructure</span>
+                <span class="entry-year">2024</span>
+              </div>
+            </header>
+            <h3 class="entry-title">Crypto Arbitrage Scanner</h3>
+            <p class="entry-lede">
+              Real-time cross-exchange arbitrage detector. Pulls live order books from five centralized venues concurrently over WebSocket, normalizes the feed in a Rust core for low-latency diffing, models taker fees and on-chain withdrawal cost per asset, caps size to top-of-book depth, and ranks net opportunities in a live terminal dashboard. <em>fetch → normalize → match → cost-model → rank → render.</em>
+            </p>
+            <div class="entry-stack">
+              <span class="entry-stack-k">Stack</span>
+              <span>Python</span><span>asyncio</span><span>ccxt</span><span>Rust + Tokio (order-book diff)</span><span>uvloop</span><span>WebSocket</span><span>rich</span>
+            </div>
+            <div class="entry-links">
+              <a href="https://github.com/carlfakhir/crypto-arb-scanner" target="_blank" class="elink"><span class="elink-no">↗</span><span>Source</span></a>
             </div>
           </div>
-          <h4>Crypto Arbitrage Scanner</h4>
-          <p>Real-time cross-exchange arbitrage detector. Pulls live order books from five centralized venues concurrently via async ccxt, models taker fees and on-chain withdrawal cost per asset, caps size to top-of-book depth, and ranks net opportunities in a live terminal dashboard. Built to mirror the shape of a real arb engine: fetch &rarr; normalize &rarr; match &rarr; cost-model &rarr; rank &rarr; render.</p>
-          <div class="tags">
-            <span>Python</span><span>asyncio</span><span>ccxt</span><span>rich</span><span>Market Microstructure</span>
-          </div>
-        </div>
+        </li>
 
-        <div class="project-card">
-          <div class="card-top">
-            <div class="card-icon">&#9729;</div>
-            <div class="card-links">
-              <a href="https://github.com/carlfakhir/cloud-cost-platform" target="_blank" title="GitHub">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-              </a>
+        <li class="entry" data-tilt data-tilt-max="6" style="--tet:#f0c800">
+          <div class="entry-inner" data-tilt-inner>
+            <div class="entry-shine" aria-hidden="true"></div>
+            <header class="entry-head">
+              <div class="entry-meta">
+                <span class="entry-no">005</span>
+                <span class="entry-kind">infra · ml</span>
+                <span class="entry-year">2024</span>
+              </div>
+            </header>
+            <h3 class="entry-title">Cloud Cost Attribution Platform</h3>
+            <p class="entry-lede">
+              A precursor to Optimis: cost prediction and attribution for AWS EC2, S3, and RDS. Predicts monthly spend with 94% accuracy via a Random Forest ensemble in Python and C++, stores 1M+ records in MongoDB, provisions cleanly through Terraform, and ships behind Docker and Kubernetes so onboarding drops from hours to ten minutes. Prometheus and Grafana on the side for usage telemetry.
+            </p>
+            <div class="entry-stack">
+              <span class="entry-stack-k">Stack</span>
+              <span>Python</span><span>C++</span><span>MongoDB</span><span>AWS</span><span>Terraform</span><span>Docker</span><span>Kubernetes</span><span>Prometheus + Grafana</span><span>scikit-learn</span>
+            </div>
+            <div class="entry-links">
+              <a href="https://github.com/carlfakhir/cloud-cost-platform" target="_blank" class="elink"><span class="elink-no">↗</span><span>Source</span></a>
             </div>
           </div>
-          <h4>Cloud Infrastructure Cost Attribution Platform</h4>
-          <p>Cost prediction and attribution platform for AWS EC2, S3, and RDS. Predicts monthly cloud spend with 94% accuracy via a Random Forest ensemble in Python/C++. Stores 1M+ records in MongoDB and automates deployment through Docker/Kubernetes, cutting setup time from hours to 10 minutes.</p>
-          <div class="tags">
-            <span>Python</span><span>C++</span><span>MongoDB</span><span>AWS</span><span>Docker</span><span>Kubernetes</span>
-          </div>
-        </div>
+        </li>
 
-        <div class="project-card">
-          <div class="card-top">
-            <div class="card-icon">&#9881;</div>
-            <div class="card-links">
-              <a href="https://github.com/carlfakhir/distributed-compute-engine" target="_blank" title="GitHub">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-              </a>
+        <li class="entry" data-tilt data-tilt-max="6" style="--tet:#d83020">
+          <div class="entry-inner" data-tilt-inner>
+            <div class="entry-shine" aria-hidden="true"></div>
+            <header class="entry-head">
+              <div class="entry-meta">
+                <span class="entry-no">006</span>
+                <span class="entry-kind">distributed · ml</span>
+                <span class="entry-year">2024</span>
+              </div>
+            </header>
+            <h3 class="entry-title">Distributed Compute Optimization Engine</h3>
+            <p class="entry-lede">
+              CNN-based workload predictor for GPU clusters that lifts utilization 22% across distributed environments. Ray for the distributed training schedule, NCCL for collective comms, R for statistical bottleneck analysis of execution traces, and AWS Lambda for telemetry-driven auto-scaling against CloudWatch.
+            </p>
+            <div class="entry-stack">
+              <span class="entry-stack-k">Stack</span>
+              <span>Python</span><span>PyTorch</span><span>CUDA · cuDNN</span><span>CNNs</span><span>Ray</span><span>NCCL</span><span>Triton</span><span>R</span><span>AWS Lambda</span><span>CloudWatch</span>
+            </div>
+            <div class="entry-links">
+              <a href="https://github.com/carlfakhir/distributed-compute-engine" target="_blank" class="elink"><span class="elink-no">↗</span><span>Source</span></a>
             </div>
           </div>
-          <h4>Distributed Compute Optimization Engine</h4>
-          <p>CNN-based workload predictor for GPU clusters that increases GPU utilization by 22% across distributed environments. Uses R for statistical bottleneck analysis of execution traces and engineers AWS Lambda serverless functions to trigger auto-scaling based on real-time telemetry.</p>
-          <div class="tags">
-            <span>Python</span><span>CNNs</span><span>R</span><span>AWS Lambda</span><span>Distributed Systems</span>
-          </div>
-        </div>
+        </li>
 
-        <div class="project-card">
-          <div class="card-top">
-            <div class="card-icon">&#127860;</div>
-            <div class="card-links">
-              <a href="https://github.com/carlfakhir/food-finder-atl" target="_blank" title="GitHub">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-              </a>
+        <li class="entry" data-tilt data-tilt-max="6" style="--tet:#3848c8">
+          <div class="entry-inner" data-tilt-inner>
+            <div class="entry-shine" aria-hidden="true"></div>
+            <header class="entry-head">
+              <div class="entry-meta">
+                <span class="entry-no">007</span>
+                <span class="entry-kind">full-stack</span>
+                <span class="entry-year">2023</span>
+              </div>
+            </header>
+            <h3 class="entry-title">Food Finder ATL</h3>
+            <p class="entry-lede">
+              A full-stack Django app for discovering restaurants in Atlanta. Search by name, cuisine, or location; interactive Google Map; save favorites; browse reviews. Behind user auth.
+            </p>
+            <div class="entry-stack">
+              <span class="entry-stack-k">Stack</span>
+              <span>Python</span><span>Django</span><span>Google Maps</span><span>SQLite</span>
+            </div>
+            <div class="entry-links">
+              <a href="https://github.com/carlfakhir/food-finder-atl" target="_blank" class="elink"><span class="elink-no">↗</span><span>Source</span></a>
             </div>
           </div>
-          <h4>Food Finder ATL</h4>
-          <p>A full-stack Django web app for discovering restaurants in Atlanta. Search by name, cuisine, or location; view spots on an interactive Google Map; save favorites; and browse Google reviews and ratings, all behind user authentication.</p>
-          <div class="tags">
-            <span>Python</span><span>Django</span><span>Google Maps API</span><span>SQLite</span>
-          </div>
-        </div>
+        </li>
 
-        <div class="project-card">
-          <div class="card-top">
-            <div class="card-icon">&#9836;</div>
-            <div class="card-links">
-              <a href="https://github.com/carlfakhir/spotify-wrapper" target="_blank" title="GitHub">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-              </a>
+        <li class="entry" data-tilt data-tilt-max="6" style="--tet:#00d4d4">
+          <div class="entry-inner" data-tilt-inner>
+            <div class="entry-shine" aria-hidden="true"></div>
+            <header class="entry-head">
+              <div class="entry-meta">
+                <span class="entry-no">008</span>
+                <span class="entry-kind">full-stack · data viz</span>
+                <span class="entry-year">2023</span>
+              </div>
+            </header>
+            <h3 class="entry-title">Spotify Wrapper</h3>
+            <p class="entry-lede">
+              A Django app that visualizes Spotify listening habits — top tracks, artists, genres, and mood trends across short, medium, and long ranges. Duo comparisons and LLM-generated personality summaries.
+            </p>
+            <div class="entry-stack">
+              <span class="entry-stack-k">Stack</span>
+              <span>Python</span><span>Django</span><span>Spotify API</span><span>PostgreSQL</span>
+            </div>
+            <div class="entry-links">
+              <a href="https://github.com/carlfakhir/spotify-wrapper" target="_blank" class="elink"><span class="elink-no">↗</span><span>Source</span></a>
             </div>
           </div>
-          <h4>Spotify Wrapper</h4>
-          <p>A full-stack Django web app that visualizes Spotify listening habits: top tracks, artists, genres, and mood trends across short, medium, and long time ranges. Supports duo comparisons and LLM-generated personality summaries.</p>
-          <div class="tags">
-            <span>Python</span><span>Django</span><span>Spotify API</span><span>PostgreSQL</span>
-          </div>
-        </div>
+        </li>
 
-        <div class="project-card">
-          <div class="card-top">
-            <div class="card-icon">&#9654;</div>
-            <div class="card-links">
-              <a href="https://github.com/carlfakhir/pathfinding-visualizer" target="_blank" title="GitHub">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-              </a>
+        <li class="entry" data-tilt data-tilt-max="6" style="--tet:#a040d0">
+          <div class="entry-inner" data-tilt-inner>
+            <div class="entry-shine" aria-hidden="true"></div>
+            <header class="entry-head">
+              <div class="entry-meta">
+                <span class="entry-no">009</span>
+                <span class="entry-kind">visualization · algorithms</span>
+                <span class="entry-year">2023</span>
+              </div>
+            </header>
+            <h3 class="entry-title">Pathfinding Visualizer</h3>
+            <p class="entry-lede">
+              An interactive browser tool for watching graph-search algorithms work. Draw walls, set start and end nodes, and step through BFS, DFS, Dijkstra, and A* in real time.
+            </p>
+            <div class="entry-stack">
+              <span class="entry-stack-k">Stack</span>
+              <span>JavaScript</span><span>HTML Canvas</span><span>Algorithms</span>
+            </div>
+            <div class="entry-links">
+              <a href="https://github.com/carlfakhir/pathfinding-visualizer" target="_blank" class="elink"><span class="elink-no">↗</span><span>Source</span></a>
             </div>
           </div>
-          <h4>Pathfinding Visualizer</h4>
-          <p>Interactive browser tool for visualizing graph search algorithms in real time. Draw walls, set start/end nodes, and watch BFS, DFS, Dijkstra, and A* explore the grid step by step.</p>
-          <div class="tags">
-            <span>JavaScript</span><span>HTML Canvas</span><span>Algorithms</span>
-          </div>
-        </div>
+        </li>
 
-        <div class="project-card">
-          <div class="card-top">
-            <div class="card-icon">&#9883;</div>
-            <div class="card-links">
-              <a href="https://github.com/carlfakhir/neural-net-scratch" target="_blank" title="GitHub">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-              </a>
+        <li class="entry" data-tilt data-tilt-max="6" style="--tet:#f08820">
+          <div class="entry-inner" data-tilt-inner>
+            <div class="entry-shine" aria-hidden="true"></div>
+            <header class="entry-head">
+              <div class="entry-meta">
+                <span class="entry-no">010</span>
+                <span class="entry-kind">ml · from scratch</span>
+                <span class="entry-year">2022</span>
+              </div>
+            </header>
+            <h3 class="entry-title">Neural Net from Scratch</h3>
+            <p class="entry-lede">
+              A feedforward neural network in pure NumPy. No PyTorch, no TensorFlow. Backprop, mini-batch SGD, multiple activations, trained on MNIST to 97%+ accuracy. The kind of thing that teaches you what frameworks actually hide.
+            </p>
+            <div class="entry-stack">
+              <span class="entry-stack-k">Stack</span>
+              <span>Python</span><span>NumPy</span><span>backprop</span><span>SGD</span><span>MNIST</span>
+            </div>
+            <div class="entry-links">
+              <a href="https://github.com/carlfakhir/neural-net-scratch" target="_blank" class="elink"><span class="elink-no">↗</span><span>Source</span></a>
             </div>
           </div>
-          <h4>Neural Net from Scratch</h4>
-          <p>A feedforward neural network built with only NumPy (no PyTorch, no TensorFlow). Implements backpropagation, mini-batch gradient descent, and multiple activation functions. Trained on MNIST to 97%+ accuracy.</p>
-          <div class="tags">
-            <span>Python</span><span>NumPy</span><span>Machine Learning</span>
+        </li>
+
+      </ol>
+    </section>
+
+    <!-- STACK -->
+    <section id="stack" class="chapter">
+      <div class="chap-head">
+        <span class="chap-no">§03 / stack</span>
+        <h2 class="chap-title">
+          A working stack, <em>with footnotes.</em>
+        </h2>
+      </div>
+
+      <div class="stack-grid">
+        <div class="stack-card" data-tilt data-tilt-max="7">
+          <div class="stack-card-inner" data-tilt-inner>
+            <header class="stack-card-head">
+              <span class="stack-card-no">i.</span>
+              <h4>Languages</h4>
+            </header>
+            <ul>
+              <li><span>Python</span><em>daily driver</em></li>
+              <li><span>TypeScript</span><em>web side</em></li>
+              <li><span>Rust</span><em>perf-critical</em></li>
+              <li><span>Go</span></li>
+              <li><span>C / C++</span></li>
+              <li><span>Java</span></li>
+              <li><span>SQL</span></li>
+            </ul>
           </div>
         </div>
 
+        <div class="stack-card" data-tilt data-tilt-max="7">
+          <div class="stack-card-inner" data-tilt-inner>
+            <header class="stack-card-head">
+              <span class="stack-card-no">ii.</span>
+              <h4>Frameworks &amp; Tools</h4>
+            </header>
+            <ul>
+              <li><span>Next.js</span><em>App Router</em></li>
+              <li><span>FastAPI</span></li>
+              <li><span>PyTorch · CUDA</span></li>
+              <li><span>NVIDIA DGX Cloud</span><em>at work</em></li>
+              <li><span>Envoy</span><em>service mesh</em></li>
+              <li><span>Kafka</span></li>
+              <li><span>Postgres · Cassandra</span></li>
+              <li><span>Docker · Kubernetes</span></li>
+              <li><span>Terraform</span></li>
+              <li><span>AWS</span><em>EKS · Route 53 · CloudWatch</em></li>
+              <li><span>Vercel</span></li>
+              <li><span>transformers.js · WebGPU</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="stack-card" data-tilt data-tilt-max="7">
+          <div class="stack-card-inner" data-tilt-inner>
+            <header class="stack-card-head">
+              <span class="stack-card-no">iii.</span>
+              <h4>Concepts I return to</h4>
+            </header>
+            <ul>
+              <li><span>AI infrastructure</span></li>
+              <li><span>Applied ML &amp; RAG systems</span></li>
+              <li><span>Distributed systems &amp; SRE</span></li>
+              <li><span>Cloud cost &amp; observability</span></li>
+              <li><span>Service mesh &amp; networking</span></li>
+              <li><span>DevSecOps &amp; IaC</span></li>
+              <li><span>Local-first software</span></li>
+              <li><span>Browser-side inference</span></li>
+              <li><span>Static program analysis</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="chapter chapter-contact">
+      <div class="chap-head">
+        <span class="chap-no">§04 / contact</span>
+        <h2 class="chap-title">
+          Correspondence is <em>encouraged.</em>
+        </h2>
+      </div>
+
+      <div class="contact-wrap">
+        <p class="contact-lede">
+          Open to <em>internships</em>, <em>research</em>, <em>startup founding teams</em>, and any technically serious side project that would benefit from a stubborn second opinion.
+        </p>
+
+        <div class="contact-grid">
+          <a href="mailto:cfakhir3@gatech.edu" class="cnode" data-tilt data-tilt-max="9">
+            <div class="cnode-inner" data-tilt-inner>
+              <span class="cnode-k">Email</span>
+              <span class="cnode-v">cfakhir3@gatech.edu</span>
+              <span class="cnode-arrow">→</span>
+            </div>
+          </a>
+          <a href="https://www.linkedin.com/in/carl-fakhir/" target="_blank" class="cnode" data-tilt data-tilt-max="9">
+            <div class="cnode-inner" data-tilt-inner>
+              <span class="cnode-k">LinkedIn</span>
+              <span class="cnode-v">/in/carl-fakhir</span>
+              <span class="cnode-arrow">↗</span>
+            </div>
+          </a>
+          <a href="https://github.com/carlfakhir" target="_blank" class="cnode" data-tilt data-tilt-max="9">
+            <div class="cnode-inner" data-tilt-inner>
+              <span class="cnode-k">GitHub</span>
+              <span class="cnode-v">@carlfakhir</span>
+              <span class="cnode-arrow">↗</span>
+            </div>
+          </a>
+          <a href="Carl_Fakhir_resume.pdf" download class="cnode" data-tilt data-tilt-max="9">
+            <div class="cnode-inner" data-tilt-inner>
+              <span class="cnode-k">Résumé</span>
+              <span class="cnode-v">PDF</span>
+              <span class="cnode-arrow">⤓</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="colophon">
+    <div class="colophon-grid">
+      <div class="col-left">
+        <span class="col-k">COLOPHON</span>
+        <p>Set in Geist &amp; Geist Mono. Hand-built in vanilla HTML/CSS/JS. No frameworks, no trackers, just the parts that matter.</p>
+      </div>
+      <div>
+        <span class="col-k">SOURCE</span>
+        <a href="https://github.com/carlfakhir/carlfakhir.github.io" target="_blank">github.com/carlfakhir ↗</a>
+      </div>
+      <div>
+        <span class="col-k">© MMXXVI</span>
+        <p>Carl Fakhir · Atlanta, GA.<br/><span class="col-tiny">carl-fakhir.vercel.app</span></p>
       </div>
     </div>
-  </section>
-
-  <!-- SKILLS -->
-  <section id="skills" class="skills">
-    <div class="section-inner">
-      <h3 class="section-label">Skills</h3>
-      <div class="skills-grid">
-        <div class="skill-group">
-          <h5>Languages</h5>
-          <div class="skill-chips">
-            <span>Python</span><span>TypeScript</span><span>JavaScript</span><span>Java</span><span>C</span><span>SQL</span>
-          </div>
-        </div>
-        <div class="skill-group">
-          <h5>Frameworks & Tools</h5>
-          <div class="skill-chips">
-            <span>Next.js</span><span>Django</span><span>React</span><span>Docker</span><span>PostgreSQL</span><span>AWS</span>
-          </div>
-        </div>
-        <div class="skill-group">
-          <h5>Concepts</h5>
-          <div class="skill-chips">
-            <span>Distributed Systems</span><span>Machine Learning</span><span>Local-first Software</span><span>Data Structures</span><span>Algorithms</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact" class="contact">
-    <div class="section-inner">
-      <h3 class="section-label">Contact</h3>
-      <p class="contact-sub">Open to internships, research, startups, and technically serious side projects.</p>
-      <div class="contact-links">
-        <a href="mailto:cfakhir3@gatech.edu" class="btn btn-primary">Email me</a>
-        <a href="https://www.linkedin.com/in/carl-fakhir/" target="_blank" class="btn btn-ghost">LinkedIn</a>
-        <a href="https://github.com/carlfakhir" target="_blank" class="btn btn-ghost">GitHub</a>
-        <a href="Carl_Fakhir_resume.pdf" download class="btn btn-ghost">Resume</a>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <span>Built by Carl Fakhir, <a href="https://github.com/carlfakhir/carlfakhir.github.io" target="_blank">source</a></span>
   </footer>
 
   <script src="script.js"></script>
