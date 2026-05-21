@@ -1428,7 +1428,7 @@ main, .topbar, .rail, .colophon { position: relative; z-index: 5; }
     grid-template-columns: 1fr;
     gap: 2.5rem;
   }
-  .hero-right { justify-content: flex-start; }
+  .hero-right { justify-content: center; }
 
   .about-grid {
     grid-template-columns: 1fr;
